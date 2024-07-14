@@ -18,4 +18,12 @@ class BookCollectionManager:
         self.collection.append(book)
         print(f"Book added: {book}")
 
+    def remove_book(self, title):
+        for book in self.collection:
+            if book.title.lower() == title.lower():
+                self.collection.remove(book)
+                print(f"Book removed: {book}")
+                return
+        print("Book not found")
+
     
