@@ -48,4 +48,12 @@ class BookCollectionManager:
             json.dump([book.__dict__ for book in self.collection], file)
         print(f"Collection saved to {filename}")
 
-   
+    def load_from_file(self, filename):
+        try:
+            with open(filename, 'r') as file:
+                book_list = json.load(file)
+                self.collection = [Book(**book) for book in book_list]
+            print(f"Collection loaded from {filename}")
+        except FileNotFoundError:
+            print(f"No file found with the name {filename}")
+
