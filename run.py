@@ -26,4 +26,15 @@ class BookCollectionManager:
                 return
         print("Book not found")
 
+    def search_books(self, query, search_type="title"):
+        results = []
+        for book in self.collection:
+            if search_type == "title" and query.lower() in book.title.lower():
+                results.append(book)
+            elif search_type == "author" and query.lower() in book.author.lower():
+                results.append(book)
+            elif search_type == "genre" and query.lower() in book.genre.lower():
+                results.append(book)
+        return results
+
     
