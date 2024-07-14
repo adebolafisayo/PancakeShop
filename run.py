@@ -10,3 +10,8 @@ class Book:
     def __str__(self):
         return f"'{self.title}' by {self.author} ({self.year}) - {self.genre}"
 
+class BookCollectionManager:
+    def __init__(self):
+        self.collection = []
+
+    
