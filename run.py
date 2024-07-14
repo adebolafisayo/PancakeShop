@@ -37,4 +37,15 @@ class BookCollectionManager:
                 results.append(book)
         return results
 
-    
+    def list_books(self):
+        if not self.collection:
+            print("No books in the collection")
+        for book in self.collection:
+            print(book)
+
+    def save_to_file(self, filename):
+        with open(filename, 'w') as file:
+            json.dump([book.__dict__ for book in self.collection], file)
+        print(f"Collection saved to {filename}")
+
+   
