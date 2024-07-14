@@ -57,3 +57,49 @@ class BookCollectionManager:
         except FileNotFoundError:
             print(f"No file found with the name {filename}")
 
+def main():
+    manager = BookCollectionManager()
+    while True:
+        print("\nBook Collection Manager")
+        print("1. Add a Book")
+        print("2. Remove a Book")
+        print("3. Search for Books")
+        print("4. List All Books")
+        print("5. Save Collection")
+        print("6. Load Collection")
+        print("7. Exit")
+        choice = input("Enter your choice: ")
+
+        if choice == '1':
+            title = input("Enter title: ")
+            author = input("Enter author: ")
+            genre = input("Enter genre: ")
+            year = input("Enter year: ")
+            manager.add_book(Book(title, author, genre, year))
+        elif choice == '2':
+            title = input("Enter title of the book to remove: ")
+            manager.remove_book(title)
+        elif choice == '3':
+            query = input("Enter search query: ")
+            search_type = input("Search by (title/author/genre): ")
+            results = manager.search_books(query, search_type)
+            if results:
+                for book in results:
+                    print(book)
+            else:
+                print("No books found")
+        elif choice == '4':
+            manager.list_books()
+        elif choice == '5':
+            filename = input("Enter filename to save to: ")
+            manager.save_to_file(filename)
+        elif choice == '6':
+            filename = input("Enter filename to load from: ")
+            manager.load_from_file(filename)
+        elif choice == '7':
+            break
+        else:
+            print("Invalid choice, please try again")
+
+if __name__ == "__main__":
+    main()
