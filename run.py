@@ -14,4 +14,8 @@ class BookCollectionManager:
     def __init__(self):
         self.collection = []
 
+    def add_book(self, book):
+        self.collection.append(book)
+        print(f"Book added: {book}")
+
     
